@@ -1,0 +1,88 @@
+CREATE TABLE `user` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`first_name` VARCHAR(128) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`last_name` VARCHAR(128) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`name` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	`mobile` TEXT NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`email` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	`username` VARCHAR(25) NOT NULL COLLATE 'latin1_swedish_ci',
+	`dob` DATE NULL DEFAULT NULL,
+	`image` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	`password` VARCHAR(255) NOT NULL COLLATE 'latin1_swedish_ci',
+	`role_id` INT(11) NOT NULL,
+	`is_active` TINYINT(1) NOT NULL,
+	`date_created` DATETIME NULL DEFAULT NULL,
+	`updated_on` DATETIME NULL DEFAULT NULL,
+	`role` ENUM('admin','coach','client') NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`profile_pic` TEXT NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`last_logged_in` DATETIME NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=6
+;
+
+
+
+CREATE TABLE `user_access_menu` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`role_id` INT(11) NOT NULL,
+	`menu_id` INT(11) NOT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=8
+;
+
+
+CREATE TABLE `user_menu` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`menu` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=4
+;
+
+
+
+CREATE TABLE `user_role` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`role` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=3
+;
+
+
+
+CREATE TABLE `user_sub_menu` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`menu_id` INT(11) NOT NULL,
+	`title` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	`url` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	`icon` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	`is_active` TINYINT(1) NOT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=9
+;
+
+
+CREATE TABLE `user_token` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	`token` VARCHAR(128) NOT NULL COLLATE 'latin1_swedish_ci',
+	`date_created` INT(11) NOT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
