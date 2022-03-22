@@ -26,7 +26,7 @@
                         Username : <?= $user['username']; ?>
                     </p>
                     <p class="card-text">
-                        <small class="text-muted"> Member since <?= date('d F Y', $user['date_created']); ?>
+                        <small class="text-muted"> Member since <?= date('d F Y', strtotime($user['date_created'])); ?>
                         </small>
                     </p>
                 </div>

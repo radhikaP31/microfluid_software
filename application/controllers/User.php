@@ -16,6 +16,7 @@ class User extends CI_Controller
         $data['title'] = 'My Profile';
         // model
         $data['user'] = $this->user->getUserData();
+        $data['all_user'] = $this->user->getUserDataAll();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);

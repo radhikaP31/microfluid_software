@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Template Admin <?= date('Y'); ?></span>
+            <span>Copyright &copy; Microfluid Process Equipment <?= date('Y'); ?></span>
         </div>
     </div>
 </footer>
@@ -76,6 +76,50 @@
     $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+
+    $('.parent_menu_checkbox').on('click', function() {
+        const menuId = $(this).data('menu');
+        const roleId = $(this).data('role');
+        $.ajax({
+            url: "<?= base_url('admin/changeaccess'); ?>",
+            type: 'post',
+            data: {
+                menuId: menuId,
+                roleId: roleId
+            },
+            success: function() {
+                document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleId
+            }
+        });
+
+    });
+    
+    $('.sub_menu_checkbox').on('click', function() {
+        const menuId = $(this).data('menu');
+        const roleId = $(this).data('role');
+        const subMenuId = $(this).data('submenu');
+        $.ajax({
+            url: "<?= base_url('admin/changeaccess'); ?>",
+            type: 'post',
+            data: {
+                menuId: menuId,
+                roleId: roleId,
+                subMenuId:subMenuId
+            },
+            success: function() {
+                document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleId
+            }
+        });
+
+    });
+    jQuery('.deleteitem').click(function(){
+        let id = $(this).data('id');
+        let name = $(this).data('name');
+        let href = $(this).attr('href');
+        //jQuery('.deletetext').text(name);
+        jQuery('.deletebtn').attr('href',href);
+        
     });
 </script>
 </body>

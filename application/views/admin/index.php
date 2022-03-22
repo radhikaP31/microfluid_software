@@ -28,7 +28,7 @@
                                 <td><?= $users['name']; ?></td>
                                 <td><?= $users['email']; ?></td>
                                 <td><?= $users['username']; ?></td>
-                                <td><?= date('d F Y', $users['date_created']); ?></td>
+                                <td><?= date('d F Y', strtotime($users['date_created'])); ?></td>
                                 <td><?= $users['role_id']; ?></td>
                                 <td><?= $users['image']; ?></td>
                             </tr>

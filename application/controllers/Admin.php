@@ -19,8 +19,9 @@ class Admin extends CI_Controller
         $data['all_user'] = $this->user->getUserDataAll();
 
         if ($this->input->post('keyword')) {
-            $data['all_user']  = $this->admin->searchUserData();
+            //$data['all_user']  = $this->admin->searchUserData();
         }
+
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
@@ -70,6 +71,8 @@ class Admin extends CI_Controller
         $data['role'] = $this->admin->getUserRoleById($role_id);;
 
         $data['menu'] = $this->menu->getUserMenuAll();
+        
+        $data['submenu'] = $this->menu->getUserSubMenuAll();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -82,10 +85,12 @@ class Admin extends CI_Controller
     {
         $menu_id = $this->input->post('menuId');
         $role_id = $this->input->post('roleId');
+        $subMenuId = $this->input->post('subMenuId');
 
         $data = [
             'role_id' => $role_id,
-            'menu_id' => $menu_id
+            'menu_id' => $menu_id,
+            'sub_menu_id'=>$subMenuId
         ];
         $result = $this->db->get_where('user_access_menu', $data);
         if ($result->num_rows() < 1) {

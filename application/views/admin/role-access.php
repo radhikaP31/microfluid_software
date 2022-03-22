@@ -25,11 +25,27 @@
                             <td><?php echo $m['menu']; ?></td>
                             <td>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id'] ?>" data-menu="<?= $m['id'] ?>">
+                                    <input type="checkbox" class="form-check-input parent_menu_checkbox" <?= check_access($role['id'], $m['id']); ?> data-role="<?= $role['id'] ?>" data-menu="<?= $m['id'] ?>">
                                 </div>
-
                             </td>
-                        </tr>
+                            </tr>
+                            <?php if(isset($submenu[$m['id']])) { ?>
+                                <?php foreach($submenu[$m['id']] as $k=>$sub) { ?>
+                                        <tr>
+                                            <?php if($k == 0) { ?>
+                                            <th scope="row" style="text-align: center;padding-top: 10%;" rowspan="<?php echo count($submenu[$m['id']]) ?>">Submenu</th>
+                                            <?php } ?>
+                                            <td><?php echo $sub['title'] ?></td>
+                                             <td>
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input sub_menu_checkbox" <?= check_submenu_access($role['id'], $sub['id']); ?> data-role="<?= $role['id'] ?>" data-menu="<?= $m['id'] ?>" data-submenu="<?= $sub['id'] ?>" />
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                <?php } ?>
+                            <?php } ?>
+                        
                         <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>

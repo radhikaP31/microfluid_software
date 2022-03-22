@@ -7,14 +7,24 @@ function is_logged_in()
     } else {
         $role_id = $CI->session->userdata('role_id');
         $menu = $CI->uri->segment(1);
-        $queryMenu = $CI->db->get_where('user_menu', ['menu' => $menu])->row_array();
-        $menu_id = $queryMenu['id'];
+        $url = $CI->uri->segment(2) ? $menu.'/'.$CI->uri->segment(2) : $menu;
+        
+        $queryMenu = $CI->db->where("url LIKE '$url%'")->get('user_sub_menu')->row_array();
+        // var_dump($CI->db->last_query());die;
 
-        $userAccess = $CI->db->get_where('user_access_menu', ['role_id' => $role_id, 'menu_id' => $menu_id]);
+        if($queryMenu){
+            $menu_id = $queryMenu['id'];
+        
+            //$queryMenu = $CI->db->get_where('user_menu', ['menu' => $menu])->row_array();
+            //$menu_id = $queryMenu['id'];
+            
+            $userAccess = $CI->db->get_where('user_access_menu', ['role_id' => $role_id, 'sub_menu_id' => $menu_id]);
 
-        if ($userAccess->num_rows() < 1) {
-            redirect('auth/blocked');
+            if ($userAccess->num_rows() < 1) {
+                redirect('auth/blocked');
+            }
         }
+        
     }
 }
 
@@ -23,11 +33,25 @@ function check_access($role_id, $menu_id)
     $CI = get_instance();
     $CI->db->where('role_id', $role_id);
     $CI->db->where('menu_id', $menu_id);
+     $CI->db->where('sub_menu_id IS NULL or sub_menu_id=0 ');
     $result = $CI->db->get('user_access_menu');
     if ($result->num_rows() > 0) {
         return "checked='checked'";
     }
 }
+
+function check_submenu_access($role_id, $menu_id)
+{
+    $CI = get_instance();
+    $CI->db->where('role_id', $role_id);
+    $CI->db->where('sub_menu_id', $menu_id);
+    $result = $CI->db->get('user_access_menu');
+    if ($result->num_rows() > 0) {
+        return "checked='checked'";
+    }
+}
+
+
 
 function active_check($is_active, $submenu_id)
 {

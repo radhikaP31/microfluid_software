@@ -2,11 +2,12 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo site_url() ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-code"></i>
+                    <!--<i class="fas fa-code"></i>-->
+                    <img src="<?php echo site_url('assets/img/logo.png') ?>" width="50px" />
                 </div>
-                <div class="sidebar-brand-text mx-3">Template Admin </div>
+                <div class="sidebar-brand-text mx-3">Microfluid</div>
             </a>
 
             <!-- Divider -->
@@ -14,7 +15,7 @@
             <?php
             // Query Menu
             $role_id = $this->session->userdata('role_id');
-            $menu = $this->menu->showMenu($role_id);
+            $menu = $this->menu->showMenuByRole($role_id);
             ?>
 
             <!-- Looping menu -->
@@ -26,7 +27,7 @@
                 <!-- Sub Menu -->
                 <?php
                 $menuId = $m['id'];
-                $subMenu = $this->menu->showSubMenu($menuId);
+                $subMenu = $this->menu->showSubMenuByRole($menuId,$role_id);
                 ?>
 
                 <?php foreach ($subMenu as $sm) : ?>
