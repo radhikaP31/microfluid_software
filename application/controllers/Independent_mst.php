@@ -18,6 +18,7 @@ class Independent_mst extends CI_Controller
     {
 
         $data['title'] = 'Independent Master';
+        $data['type_id'] = $type_id;
 
         $data['menu'] = $this->db->get('user_menu')->result_array();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
@@ -43,7 +44,7 @@ class Independent_mst extends CI_Controller
             $this->load->view('templates/footer', $data);
         } else {
             $type_cd = $this->common_type->getTypeCodeByTypeID($this->input->post('type_id'));
-            $this->master->insertMaster($this->input->post('mstr_cd'),$this->input->post('mstr_nm'),$this->input->post('mstr_description'),$this->input->post('type_id'),$type_cd,$this->input->post('status'));
+            $this->master->insertMaster($this->input->post('mstr_cd'),$this->input->post('mstr_nm'),$this->input->post('mstr_desc'),$this->input->post('type_id'),$type_cd,$this->input->post('status'));
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Independent Master added!</div>');
             redirect('independent_mst');
@@ -74,7 +75,7 @@ class Independent_mst extends CI_Controller
             
             $type_cd = $this->common_type->getTypeCodeByTypeID($this->input->post('type_id'));
             
-            $this->master->updateMaster($mstr_id,$this->input->post('mstr_cd'),$this->input->post('mstr_nm'),$this->input->post('mstr_description'),$this->input->post('type_id'),$type_cd,$this->input->post('status'));
+            $this->master->updateMaster($mstr_id,$this->input->post('mstr_cd'),$this->input->post('mstr_nm'),$this->input->post('mstr_desc'),$this->input->post('type_id'),$type_cd,$this->input->post('status'));
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Edit Independent Master Success!</div>');
             redirect('independent_mst');

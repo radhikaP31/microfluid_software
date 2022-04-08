@@ -5,33 +5,47 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
 
-    <div class="row">
-        <div class="col-lg-6">
+    <div class="card shadow mb-4">
+        <div class="card-body">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?php foreach( $tableActions as $tableAction ) { ?>
+                 <div style="margin-right:10px;float:right">
+                    <a href="<?php echo $tableAction['url'] ?>" onclick="<?php echo (empty($tableAction['click'])? '#': $tableAction['click'] ) ?>" tooltip="<?php echo $tableAction['title'] ?>" flow="down"><span style="margin: 2px;"></span> <i class="<?php echo $tableAction['icon'] ?>" aria-hidden="true"></i></a>
+                </div>
+                <?php } ?>
             <?= $this->session->flashdata('message'); ?>
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">Add New Menu</a>
-            <table class="table table-hover">
+            <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Menu</th>
-                        <th scope="col">Action</th>
+                        <th>No</th>
+                        <?php echo '<th>', implode( '</th><th>', $tableHeader ), '</th>'; ?>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+                    <?php 
                     $i = 1;
-                    foreach ($menu as $m) : ?>
+                    foreach($tableBody as $row) {
+                        $newRow = array_values( $row );
+                        $pkey = array_shift( $newRow );
+                        $customUrl = $tableEditUrl;
+                        if($tableEditUrl != '#') {
+                            $customUrl = site_url( $tableEditUrl . '/' . $pkey);
+                        } ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td><?= $m['menu'] ?></td>
+                            <?php 
+                           // var_dump($pkey );die;
+                            echo '<td>', implode( '</td><td>', $newRow ), '</td>'; ?>
                             <td>
-                                <a href="<?= base_url('menu/editmenu/' . $m['id']); ?>" class="fa fa-edit" title="Edit"></a>
-                                <a href="<?= base_url('menu/deletemenu/' . $m['id']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteMenu" title="Delete"></a>
+                                <a href="<?php echo $customUrl;?>" class="fa fa-edit" title="Edit"></a>
+                                <a href="<?php echo site_url( $tableDeleteUrl.'/'.$pkey);?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteMenu" title="Delete"></a>
                             </td>
                         </tr>
                         <?php $i++; ?>
-                    <?php endforeach; ?>
+                    <?php } ?>
                 </tbody>
             </table>
 

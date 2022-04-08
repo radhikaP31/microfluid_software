@@ -41,8 +41,8 @@
                                     <td><?php echo date_format(date_create($invoice['next_due_date']),'Y-m-d'); ?></td>
                                    <!-- <td><?php if($invoice['status'] ==1){ echo 'Active' ; } else{ echo 'Pending' ; }  ?></td> -->
                                     <td>
-                                        <a href="<?= base_url('invoices/editInvoice/' . $invoice['id']); ?>" class="badge badge-success">Edit</a>
-                                        <a href="<?= base_url('invoices/deleteInvoice/' . $invoice['id']); ?>" data-id="<?php echo $invoice['id']; ?>"  class="badge badge-danger deleteitem" data-toggle="modal" data-target="#deleteInvoice">Delete</a>
+                                        <a href="<?= base_url('invoices/editInvoice/' . $invoice['id']); ?>" class="fa fa-edit" title="Edit"></a>
+                                        <a href="<?= base_url('invoices/deleteInvoice/' . $invoice['id']); ?>" data-id="<?php echo $invoice['id']; ?>"  class="fa fa-trash deleteitem" data-toggle="modal" data-target="#deleteInvoice" title="Delete"></a>
                                         <!-- <a href="<?= base_url('invoices/deleteInvoice/' . $invoice['id']); ?>" class="badge badge-danger" data-toggle="modal" data-target="#deleteInvoice">Delete</a> -->
                                     </td>
                                 </tr>

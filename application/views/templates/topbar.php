@@ -16,7 +16,11 @@
                     <ul class="navbar-nav ml-auto">
 
                         <div class="topbar-divider d-none d-sm-block"></div>
+                        <?php
+                        //get user information
 
+                        $user = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+                        ?>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

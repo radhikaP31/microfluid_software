@@ -38,8 +38,8 @@
                             <td><?= $sm['icon'] ?></td>
                             <td><?= $sm['is_active'] ?></td>
                             <td>
-                                <a href="<?= base_url('menu/editsub/' . $sm['id']) ?>" class="badge badge-success">Edit</a>
-                                <a href="<?= base_url('menu/deletesub/' . $sm['id']) ?>" class="badge badge-danger" data-toggle="modal" data-target="#deleteSubmenu">Delete</a>
+                                <a href="<?= base_url('menu/editsub/' . $sm['id']) ?>" class="fa fa-edit" title="Edit"></a>
+                                <a href="<?= base_url('menu/deletesub/' . $sm['id']) ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteSubmenu" title="Delete"></a>
                             </td>
                         </tr>
                         <?php $i++; ?>

@@ -41,8 +41,8 @@
                                     <td><?php echo date_format(date_create($order['next_due_date']),'Y-m-d'); ?></td>
 							<!--       <td><?php if($order['status'] == 1){ echo 'Active' ; }else{ echo 'Pending' ; } ?></td> -->
                                     <td>
-                                        <a href="<?= base_url('orders/editOrder/' . $order['id']); ?>" class="badge badge-success">Edit</a>
-                                        <a href="<?= base_url('orders/deleteOrder/' . $order['id']); ?>" data-id="<?php echo $order['id']; ?>"  class="badge badge-danger deleteitem" data-toggle="modal" data-target="#deleteOrder">Delete</a>
+                                        <a href="<?= base_url('orders/editOrder/' . $order['id']); ?>" class="fa fa-edit" title="Edit"></a>
+                                        <a href="<?= base_url('orders/deleteOrder/' . $order['id']); ?>" data-id="<?php echo $order['id']; ?>"  class="fa fa-trash deleteitem" data-toggle="modal" data-target="#deleteOrder" title="Delete"></a>
 
                                        <!--  <a href="<?= base_url('orders/deleteOrder/' . $order['id']); ?>" class="badge badge-danger" data-toggle="modal" data-target="#deleteOrder">Delete</a> -->
                                     </td>

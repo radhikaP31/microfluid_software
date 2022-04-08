@@ -16,10 +16,10 @@ class Menu_model extends CI_Model
         return $this->db->query($queryMenu)->result_array();
     }
     
-    public function showMenuByRole($role_id) {
+/*    public function showMenuByRole($role_id=0) {
          $queryMenu = "SELECT user_menu.id, menu FROM user_menu JOIN user_access_menu ON user_menu.id = user_access_menu.menu_id WHERE ( user_access_menu.sub_menu_id IS NULL or user_access_menu.sub_menu_id=0) and user_access_menu.role_id =  $role_id ORDER BY user_access_menu.menu_id ASC";
         return $this->db->query($queryMenu)->result_array();
-    }
+    }*/
     
     public function showSubMenuByRole($menu_id , $role_id) {
          $queryMenu = "SELECT user_sub_menu.* FROM user_sub_menu JOIN user_access_menu ON user_sub_menu.id = user_access_menu.sub_menu_id WHERE user_access_menu.menu_id=$menu_id and user_access_menu.role_id =  $role_id group by user_sub_menu.id ORDER BY user_sub_menu.id ASC ";

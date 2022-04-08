@@ -26,3 +26,4 @@ check for condition new menu not open
 
 New Development:
 user registration by admin only
+other dynamic fields like textarea, select, image upload, html editor

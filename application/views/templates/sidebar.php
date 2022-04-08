@@ -1,21 +1,23 @@
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav primary-bg sidebar sidebar-dark accordion" id="accordionSidebar" >
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo site_url() ?>">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <div class="sidebar-brand-icon">
                     <!--<i class="fas fa-code"></i>-->
                     <img src="<?php echo site_url('assets/img/logo.png') ?>" width="50px" />
                 </div>
-                <div class="sidebar-brand-text mx-3">Microfluid</div>
+                <div class="sidebar-brand-text mx-3" style="font-size: 8px;">Microfluid Process Equipment</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
             <?php
             // Query Menu
+            /*
+            $menu = $this->menu->showMenuByRole($role_id);*/
             $role_id = $this->session->userdata('role_id');
-            $menu = $this->menu->showMenuByRole($role_id);
+            $menu = showMenuByRole($this->session->userdata('role_id'));
             ?>
 
             <!-- Looping menu -->

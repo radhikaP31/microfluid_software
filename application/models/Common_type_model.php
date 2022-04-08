@@ -7,7 +7,7 @@ class Common_type_model extends CI_Model
 	/*id
 	mstr_cd
 	mstr_nm
-	mstr_description
+	mstr_desc
 	type_id
 	type_cd
 	status

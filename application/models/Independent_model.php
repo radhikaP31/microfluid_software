@@ -7,19 +7,19 @@ class Independent_model extends CI_Model
 	/*id
 	mstr_cd
 	mstr_nm
-	mstr_description
+	mstr_desc
 	type_id
 	type_cd
 	status
 	created_on
 	updated_on*/
 
-    public function insertMaster($mstr_cd='',$mstr_nm='',$mstr_description='',$type_id='',$type_cd='',$status=''){
+    public function insertMaster($mstr_cd='',$mstr_nm='',$mstr_desc='',$type_id='',$type_cd='',$status=''){
 
         $data = [
                     'mstr_cd' => $mstr_cd,
                     'mstr_nm' =>  $mstr_nm,
-                    'mstr_description' => $mstr_description,
+                    'mstr_desc' => $mstr_desc,
                     'type_id' => $type_id,
                     'type_cd' => $type_cd,
                     'status' => $status,
@@ -32,12 +32,12 @@ class Independent_model extends CI_Model
     }
 
 
-    public function updateMaster($mstr_id,$mstr_cd='',$mstr_nm='',$mstr_description='',$type_id='',$type_cd='',$status=''){
+    public function updateMaster($mstr_id,$mstr_cd='',$mstr_nm='',$mstr_desc='',$type_id='',$type_cd='',$status=''){
 
         $data = [
                     'mstr_cd' => $mstr_cd,
                     'mstr_nm' =>  $mstr_nm,
-                    'mstr_description' => $mstr_description,
+                    'mstr_desc' => $mstr_desc,
                     'type_id' => $type_id,
                     'type_cd' => $type_cd,
                     'status' => $status,

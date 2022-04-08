@@ -34,8 +34,8 @@
                                     <td><?= $common_type['description'] ?></td>
                                     <td><?= $common_type['parent_id'] ?></td>
                                     <td>
-                                        <a href="<?= base_url('common_type/editType/' . $common_type['id']); ?>" class="badge badge-success">Edit</a>
-                                        <a href="<?= base_url('common_type/deleteType/' . $common_type['id']); ?>" data-id="<?php echo $common_type['id']; ?>" class="badge badge-danger deleteitem" data-toggle="modal" data-target="#deleteType">Delete</a>
+                                        <a href="<?= base_url('common_type/editType/' . $common_type['id']); ?>" class="fa fa-edit" title="Edit"></a>
+                                        <a href="<?= base_url('common_type/deleteType/' . $common_type['id']); ?>" data-id="<?php echo $common_type['id']; ?>" class="fa fa-trash deleteitem" data-toggle="modal" data-target="#deleteType" title="Delete"></a>
                                     </td>
                                 </tr>
                             <?php $i++; ?>

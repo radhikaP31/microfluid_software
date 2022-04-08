@@ -34,13 +34,13 @@
 									<td><?= $master['id'] ?></td>
                                     <td><?= $master['mstr_cd'] ?></td>
                                     <td><?= $master['mstr_nm'] ?></td>
-                                    <td><?= $master['mstr_description'] ?></td>
+                                    <td><?= $master['mstr_desc'] ?></td>
                                     <td><?= $master['type_id'] ?></td>
                                     <td><?= $master['type_cd'] ?></td>
                                   <!-- <td><?php if($master['status'] ==1){ echo 'Active' ; }else{ echo 'Pending' ; } ?></td> -->
                                     <td>
-                                        <a href="<?= base_url('independent_mst/editMaster/' . $master['id']); ?>" class="badge badge-success">Edit</a>
-                                        <a href="<?= base_url('independent_mst/deleteMaster/' . $master['id']); ?>" data-id="<?php echo $master['id']; ?>"  class="badge badge-danger deleteitem" data-toggle="modal" data-target="#deleteMaster">Delete</a>
+                                        <a href="<?= base_url('independent_mst/editMaster/' . $master['id']); ?>" class="fa fa-edit" title="Edit"></a>
+                                        <a href="<?= base_url('independent_mst/deleteMaster/' . $master['id']); ?>" data-id="<?php echo $master['id']; ?>"  class="fa fa-trash deleteitem" data-toggle="modal" data-target="#deleteMaster" title="Delete"></a>
                                     </td>
                                 </tr>
                             <?php $i++; ?>
@@ -73,7 +73,12 @@
                         <select class="form-control select-default selectpicker" placeholder="" id="type_id" name="type_id">
                             <option value="">Select a Common Type</option>
                             <?php foreach ($common_types as $key => $type) { ?>
-                                <option value="<?= $type['id'] ?>"><?= $type['title'] ?></option>
+                                <?php $selected = '';
+                                    if($type_id == $type['id']){
+                                        $selected = 'selected';
+                                    } ?>
+                                <option value="<?= $type['id'] ?>" <?= $selected; ?>><?= $type['title'] ?></option>
+                                
                             <?php } ?>
                         </select>
                         <!-- <input type="text" class="form-control" id="type_id" name="type_id" placeholder="Type ID"> -->
@@ -85,7 +90,7 @@
                         <input type="textarea" class="form-control" id="mstr_nm" name="mstr_nm" placeholder="Master Name">
                     </div>
                     <div class="form-group">
-                        <input type="textarea" class="form-control" id="mstr_description" name="mstr_description" placeholder="Description">
+                        <input type="textarea" class="form-control" id="mstr_desc" name="mstr_desc" placeholder="Description">
                     </div>
                     <div class="form-group">
                         <select class="form-control select-default selectpicker" placeholder="" id="status" name="status">

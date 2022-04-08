@@ -40,9 +40,9 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="mstr_description" class="col-sm-2 col-form-label">Master Description</label>
+                <label for="mstr_desc" class="col-sm-2 col-form-label">Master Description</label>
                 <div class="col-sm-10">
-                    <input type="text" name="mstr_description" id="mstr_description" class="form-control" value="<?= $master['mstr_description']; ?>">
+                    <input type="text" name="mstr_desc" id="mstr_desc" class="form-control" value="<?= $master['mstr_desc']; ?>">
                 </div>
             </div>
             <div class="form-group row">

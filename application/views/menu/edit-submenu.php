@@ -15,7 +15,12 @@
             <select name="menu_id" id="menu_id" class="form-control">
                 <option value="">Select Menu</option>
                 <?php foreach ($menu as $m) : ?>
-                    <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
+                    <?php $selected = '';
+
+                        if($submenu['menu_id'] == $m['id']){
+                            $selected = 'selected';
+                        } ?>
+                        <option value="<?= $m['id'] ?>" <?= $selected; ?>><?= $m['menu'] ?></option>
                 <?php endforeach; ?>
             </select>
             <?= form_error('menu_id', '<small class="text-danger pl-3">', '</small>'); ?>

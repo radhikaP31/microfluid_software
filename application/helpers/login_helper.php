@@ -10,7 +10,6 @@ function is_logged_in()
         $url = $CI->uri->segment(2) ? $menu.'/'.$CI->uri->segment(2) : $menu;
         
         $queryMenu = $CI->db->where("url LIKE '$url%'")->get('user_sub_menu')->row_array();
-        // var_dump($CI->db->last_query());die;
 
         if($queryMenu){
             $menu_id = $queryMenu['id'];

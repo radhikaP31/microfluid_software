@@ -19,8 +19,16 @@
     <link href="<?= base_url('assets/'); ?>css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <!-- favicon -->
+    <link href="<?= base_url('assets/'); ?>img/favicon.ico" rel="icon">
+
+    <!-- css file -->
+    <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
+
+
     <!-- CKeditor CDN for HTML editor field -->
     <script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script> -->
 
 </head>
 

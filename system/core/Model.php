@@ -38,4 +38,13 @@ class CI_Model {
 		return get_instance()->$key;
 	}
 
+	public function getColumnData($columnName=null,$id=0,$tableName=null,$viewColumnName){
+
+		$this->db->select($viewColumnName.' as '.$viewColumnName);
+		$this->db->where($columnName, $id);
+	    $query = $this->db->get($tableName)->row_array();
+	    // /var_dump($this->db->last_query());die;
+	    return $query[$viewColumnName];
+	}
+
 }
